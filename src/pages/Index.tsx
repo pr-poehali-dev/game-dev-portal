@@ -46,6 +46,12 @@ const Index = () => {
                 Карьера
               </a>
               <a
+                href="#marketplace"
+                className="text-white hover:text-purple-400 transition-colors"
+              >
+                Ассеты
+              </a>
+              <a
                 href="#about"
                 className="text-white hover:text-purple-400 transition-colors"
               >
@@ -326,6 +332,222 @@ const Index = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Asset Marketplace */}
+      <section id="marketplace" className="py-20 px-4 bg-black/30">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Маркетплейс ассетов
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Покупайте и продавайте готовые игровые ассеты: 3D модели,
+              текстуры, звуки, код и многое другое
+            </p>
+          </div>
+
+          {/* Categories */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {[
+              { name: "Все", icon: "Grid3x3", active: true },
+              { name: "3D модели", icon: "Box", active: false },
+              { name: "Текстуры", icon: "Image", active: false },
+              { name: "Звуки", icon: "Volume2", active: false },
+              { name: "Код", icon: "Code", active: false },
+              { name: "UI/UX", icon: "Layers", active: false },
+            ].map((category) => (
+              <Button
+                key={category.name}
+                variant={category.active ? "default" : "outline"}
+                className={
+                  category.active
+                    ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                    : "border-purple-500/30 text-purple-400 hover:bg-purple-500/10"
+                }
+              >
+                <Icon name={category.icon} size={16} className="mr-2" />
+                {category.name}
+              </Button>
+            ))}
+          </div>
+
+          {/* Asset Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {[
+              {
+                name: "Sci-Fi Weapon Pack",
+                price: "₽2,500",
+                author: "PixelArt Studio",
+                rating: 4.8,
+                sales: 156,
+                category: "3D модели",
+                image: "/img/5f3938f0-f656-46f0-b816-337f1b74347c.jpg",
+              },
+              {
+                name: "Fantasy UI Kit",
+                price: "₽1,800",
+                author: "UI Master",
+                rating: 4.9,
+                sales: 89,
+                category: "UI/UX",
+                image: "/img/5f3938f0-f656-46f0-b816-337f1b74347c.jpg",
+              },
+              {
+                name: "Ambient Music Pack",
+                price: "₽3,200",
+                author: "SoundWave",
+                rating: 4.7,
+                sales: 234,
+                category: "Звуки",
+                image: "/img/5f3938f0-f656-46f0-b816-337f1b74347c.jpg",
+              },
+              {
+                name: "Procedural Terrain",
+                price: "₽4,500",
+                author: "CodeCrafter",
+                rating: 4.6,
+                sales: 67,
+                category: "Код",
+                image: "/img/5f3938f0-f656-46f0-b816-337f1b74347c.jpg",
+              },
+              {
+                name: "Medieval Textures",
+                price: "₽1,200",
+                author: "TextureKing",
+                rating: 4.8,
+                sales: 312,
+                category: "Текстуры",
+                image: "/img/5f3938f0-f656-46f0-b816-337f1b74347c.jpg",
+              },
+              {
+                name: "Character Animations",
+                price: "₽5,000",
+                author: "AnimPro",
+                rating: 4.9,
+                sales: 45,
+                category: "3D модели",
+                image: "/img/5f3938f0-f656-46f0-b816-337f1b74347c.jpg",
+              },
+              {
+                name: "Retro Sound Effects",
+                price: "₽900",
+                author: "ChipTunes",
+                rating: 4.5,
+                sales: 189,
+                category: "Звуки",
+                image: "/img/5f3938f0-f656-46f0-b816-337f1b74347c.jpg",
+              },
+              {
+                name: "Inventory System",
+                price: "₽3,800",
+                author: "GameLogic",
+                rating: 4.7,
+                sales: 78,
+                category: "Код",
+                image: "/img/5f3938f0-f656-46f0-b816-337f1b74347c.jpg",
+              },
+            ].map((asset, index) => (
+              <Card
+                key={index}
+                className="bg-black/40 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 hover:scale-105 group"
+              >
+                <CardHeader className="p-0">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <img
+                      src={asset.image}
+                      alt={asset.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute top-2 right-2">
+                      <Badge className="bg-purple-500/20 text-purple-400 backdrop-blur-sm">
+                        {asset.category}
+                      </Badge>
+                    </div>
+                    <div className="absolute bottom-2 left-2">
+                      <div className="flex items-center space-x-1 bg-black/60 backdrop-blur-sm rounded px-2 py-1">
+                        <Icon
+                          name="Star"
+                          className="text-yellow-400"
+                          size={12}
+                        />
+                        <span className="text-white text-xs">
+                          {asset.rating}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-4">
+                  <CardTitle className="text-white text-lg mb-2 line-clamp-1">
+                    {asset.name}
+                  </CardTitle>
+                  <p className="text-gray-400 text-sm mb-3">
+                    от {asset.author}
+                  </p>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="text-lg font-bold text-green-400">
+                      {asset.price}
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      {asset.sales} продаж
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                    >
+                      Купить
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10"
+                    >
+                      <Icon name="Heart" size={16} />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Seller CTA */}
+          <div className="mt-16 text-center">
+            <Card className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border-purple-500/30 max-w-2xl mx-auto">
+              <CardContent className="p-8">
+                <Icon
+                  name="Upload"
+                  className="text-purple-400 mx-auto mb-4"
+                  size={48}
+                />
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Продавайте свои ассеты
+                </h3>
+                <p className="text-gray-300 mb-6">
+                  Загружайте свои 3D модели, текстуры, звуки и код.
+                  Зарабатывайте на своем творчестве!
+                </p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                  >
+                    Начать продавать
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white"
+                  >
+                    Узнать больше
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
