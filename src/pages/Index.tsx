@@ -42,12 +42,12 @@ const Index = () => {
               >
                 Хакатоны
               </a>
-              <a
-                href="#career"
+              <button
+                onClick={() => navigate("/jobs")}
                 className="text-white hover:text-purple-400 transition-colors"
               >
                 Карьера
-              </a>
+              </button>
               <a
                 href="#marketplace"
                 className="text-white hover:text-purple-400 transition-colors"
@@ -146,15 +146,91 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Games Catalog */}
-      <section id="games" className="py-20 px-4">
+      {/* Indie Projects Section */}
+      <section id="projects" className="py-20 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">Каталог игр</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Инди-проекты</h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Откройте для себя лучшие инди-проекты и поддержите талантливых
-              разработчиков
+              Размещайте свои проекты на нашей платформе, получайте отзывы
+              сообщества и привлекайте инвесторов
             </p>
+          </div>
+
+          {/* Project Submission CTA */}
+          <div className="mb-16">
+            <Card className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-blue-500/30 max-w-4xl mx-auto">
+              <CardContent className="p-8">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  <div className="md:w-1/2">
+                    <h3 className="text-3xl font-bold text-white mb-4">
+                      Разместите свой проект
+                    </h3>
+                    <p className="text-gray-300 mb-6">
+                      Покажите свою игру сообществу разработчиков, получите
+                      обратную связь и найдите инвесторов для дальнейшего
+                      развития проекта.
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                      <Button
+                        size="lg"
+                        className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600"
+                      >
+                        Разместить проект
+                      </Button>
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white"
+                      >
+                        Условия размещения
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="md:w-1/2">
+                    <div className="bg-black/40 rounded-lg p-6 border border-blue-500/30">
+                      <h4 className="text-white font-semibold mb-4">
+                        Что вы получите:
+                      </h4>
+                      <ul className="space-y-3 text-gray-300">
+                        <li className="flex items-center">
+                          <Icon
+                            name="Check"
+                            className="text-green-400 mr-2"
+                            size={16}
+                          />
+                          Видимость для 1000+ разработчиков
+                        </li>
+                        <li className="flex items-center">
+                          <Icon
+                            name="Check"
+                            className="text-green-400 mr-2"
+                            size={16}
+                          />
+                          Обратная связь от сообщества
+                        </li>
+                        <li className="flex items-center">
+                          <Icon
+                            name="Check"
+                            className="text-green-400 mr-2"
+                            size={16}
+                          />
+                          Доступ к инвесторам
+                        </li>
+                        <li className="flex items-center">
+                          <Icon
+                            name="Check"
+                            className="text-green-400 mr-2"
+                            size={16}
+                          />
+                          Возможность найти команду
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3, 4, 5, 6].map((index) => (
@@ -202,45 +278,130 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Events & Hackathons */}
-      <section id="events" className="py-20 px-4 bg-black/30">
+      {/* Hackathons Section */}
+      <section id="hackathons" className="py-20 px-4 bg-black/30">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white mb-4">
-              События и хакатоны
+              Хакатоны и соревнования
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Участвуйте в соревнованиях, изучайте новые технологии и
               знакомьтесь с единомышленниками
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="bg-black/40 border-green-500/30 hover:border-green-500/60 transition-all duration-300">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-white flex items-center space-x-2">
-                    <Icon name="Trophy" className="text-green-400" size={24} />
-                    <span>Game Jam 2024</span>
-                  </CardTitle>
-                  <Badge className="bg-green-500/20 text-green-400">
-                    Активный
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-400 mb-4">
-                  48-часовой хакатон по созданию игр на тему "Космос и время"
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="text-sm text-gray-500">
-                    Призовой фонд: ₽500,000
+
+          {/* Featured Hackathon */}
+          <div className="mb-12">
+            <Card className="bg-gradient-to-r from-green-500/20 to-blue-500/20 border-green-500/30 max-w-4xl mx-auto">
+              <CardContent className="p-8">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  <div className="md:w-2/3">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Icon
+                        name="Trophy"
+                        className="text-green-400"
+                        size={32}
+                      />
+                      <h3 className="text-3xl font-bold text-white">
+                        GameJam 2024: Космос и время
+                      </h3>
+                      <Badge className="bg-green-500/20 text-green-400">
+                        Активный
+                      </Badge>
+                    </div>
+                    <p className="text-gray-300 mb-6">
+                      48-часовой хакатон по созданию игр. Покажите свои навыки,
+                      найдите команду и выиграйте призы от наших партнеров.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                      <div className="bg-black/40 rounded-lg p-4 border border-green-500/30">
+                        <div className="text-2xl font-bold text-green-400">
+                          ₽500,000
+                        </div>
+                        <div className="text-sm text-gray-400">
+                          Призовой фонд
+                        </div>
+                      </div>
+                      <div className="bg-black/40 rounded-lg p-4 border border-blue-500/30">
+                        <div className="text-2xl font-bold text-blue-400">
+                          48 часов
+                        </div>
+                        <div className="text-sm text-gray-400">
+                          Время на разработку
+                        </div>
+                      </div>
+                      <div className="bg-black/40 rounded-lg p-4 border border-purple-500/30">
+                        <div className="text-2xl font-bold text-purple-400">
+                          200+
+                        </div>
+                        <div className="text-sm text-gray-400">Участников</div>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-4">
+                      <Button
+                        size="lg"
+                        className="bg-green-500 hover:bg-green-600"
+                      >
+                        Участвовать
+                      </Button>
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="border-green-500 text-green-400 hover:bg-green-500 hover:text-white"
+                      >
+                        Подробнее
+                      </Button>
+                    </div>
                   </div>
-                  <Button size="sm" className="bg-green-500 hover:bg-green-600">
-                    Участвовать
-                  </Button>
+                  <div className="md:w-1/3">
+                    <div className="bg-black/60 rounded-lg p-6 border border-green-500/30">
+                      <h4 className="text-white font-semibold mb-4">
+                        Расписание:
+                      </h4>
+                      <ul className="space-y-2 text-gray-300">
+                        <li className="flex items-center">
+                          <Icon
+                            name="Calendar"
+                            className="text-green-400 mr-2"
+                            size={16}
+                          />
+                          Регистрация: до 15 июля
+                        </li>
+                        <li className="flex items-center">
+                          <Icon
+                            name="Play"
+                            className="text-blue-400 mr-2"
+                            size={16}
+                          />
+                          Начало: 20 июля, 18:00
+                        </li>
+                        <li className="flex items-center">
+                          <Icon
+                            name="Flag"
+                            className="text-purple-400 mr-2"
+                            size={16}
+                          />
+                          Окончание: 22 июля, 18:00
+                        </li>
+                        <li className="flex items-center">
+                          <Icon
+                            name="Award"
+                            className="text-yellow-400 mr-2"
+                            size={16}
+                          />
+                          Награждение: 25 июля
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
+          </div>
+
+          {/* Other Events */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="bg-black/40 border-yellow-500/30 hover:border-yellow-500/60 transition-all duration-300">
               <CardHeader>
                 <div className="flex items-center justify-between">
@@ -270,6 +431,245 @@ const Index = () => {
                 </div>
               </CardContent>
             </Card>
+
+            <Card className="bg-black/40 border-blue-500/30 hover:border-blue-500/60 transition-all duration-300">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-white flex items-center space-x-2">
+                    <Icon name="Users" className="text-blue-400" size={24} />
+                    <span>Networking Event</span>
+                  </CardTitle>
+                  <Badge className="bg-blue-500/20 text-blue-400">
+                    Открыта регистрация
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-400 mb-4">
+                  Встреча разработчиков, дизайнеров и инвесторов
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-gray-500">Онлайн + офлайн</div>
+                  <Button size="sm" className="bg-blue-500 hover:bg-blue-600">
+                    Присоединиться
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-black/40 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-white flex items-center space-x-2">
+                    <Icon
+                      name="BookOpen"
+                      className="text-purple-400"
+                      size={24}
+                    />
+                    <span>Мастер-класс</span>
+                  </CardTitle>
+                  <Badge className="bg-purple-500/20 text-purple-400">
+                    Завершен
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-400 mb-4">
+                  "Монетизация инди-игр: от идеи до успеха"
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-gray-500">Запись доступна</div>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white"
+                  >
+                    Смотреть
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Investments Section */}
+      <section id="investments" className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-4">Инвестиции</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Получите финансирование для своего проекта или инвестируйте в
+              перспективные игры
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* For Developers */}
+            <Card className="bg-gradient-to-br from-green-500/20 to-blue-500/20 border-green-500/30">
+              <CardContent className="p-8">
+                <div className="flex items-center mb-6">
+                  <Icon
+                    name="TrendingUp"
+                    className="text-green-400 mr-4"
+                    size={32}
+                  />
+                  <h3 className="text-2xl font-bold text-white">
+                    Для разработчиков
+                  </h3>
+                </div>
+                <p className="text-gray-300 mb-6">
+                  Привлекайте инвестиции для развития своего проекта. Мы поможем
+                  найти подходящих инвесторов и партнеров.
+                </p>
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-start">
+                    <Icon
+                      name="Check"
+                      className="text-green-400 mr-3 mt-1"
+                      size={16}
+                    />
+                    <div>
+                      <div className="text-white font-semibold">
+                        Seed-инвестиции
+                      </div>
+                      <div className="text-gray-400 text-sm">
+                        От ₽500,000 до ₽5M
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Icon
+                      name="Check"
+                      className="text-green-400 mr-3 mt-1"
+                      size={16}
+                    />
+                    <div>
+                      <div className="text-white font-semibold">
+                        Партнерство с издателями
+                      </div>
+                      <div className="text-gray-400 text-sm">
+                        Помощь в публикации и маркетинге
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Icon
+                      name="Check"
+                      className="text-green-400 mr-3 mt-1"
+                      size={16}
+                    />
+                    <div>
+                      <div className="text-white font-semibold">Менторство</div>
+                      <div className="text-gray-400 text-sm">
+                        Консультации от экспертов индустрии
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <Button
+                  size="lg"
+                  className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600"
+                >
+                  Подать заявку на инвестиции
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* For Investors */}
+            <Card className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-purple-500/30">
+              <CardContent className="p-8">
+                <div className="flex items-center mb-6">
+                  <Icon
+                    name="DollarSign"
+                    className="text-purple-400 mr-4"
+                    size={32}
+                  />
+                  <h3 className="text-2xl font-bold text-white">
+                    Для инвесторов
+                  </h3>
+                </div>
+                <p className="text-gray-300 mb-6">
+                  Инвестируйте в перспективные игровые проекты с высоким
+                  потенциалом роста и получайте прибыль.
+                </p>
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-start">
+                    <Icon
+                      name="Target"
+                      className="text-purple-400 mr-3 mt-1"
+                      size={16}
+                    />
+                    <div>
+                      <div className="text-white font-semibold">
+                        Проверенные проекты
+                      </div>
+                      <div className="text-gray-400 text-sm">
+                        Прошедшие экспертную оценку
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Icon
+                      name="Shield"
+                      className="text-purple-400 mr-3 mt-1"
+                      size={16}
+                    />
+                    <div>
+                      <div className="text-white font-semibold">
+                        Прозрачность
+                      </div>
+                      <div className="text-gray-400 text-sm">
+                        Полная отчетность по проектам
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Icon
+                      name="PieChart"
+                      className="text-purple-400 mr-3 mt-1"
+                      size={16}
+                    />
+                    <div>
+                      <div className="text-white font-semibold">
+                        Диверсификация
+                      </div>
+                      <div className="text-gray-400 text-sm">
+                        Различные жанры и платформы
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <Button
+                  size="lg"
+                  className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                >
+                  Стать инвестором
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Investment Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-green-400 mb-2">
+                ₽100M+
+              </div>
+              <div className="text-gray-300">Общий объем инвестиций</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-400 mb-2">50+</div>
+              <div className="text-gray-300">Профинансированных проектов</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-purple-400 mb-2">25+</div>
+              <div className="text-gray-300">Активных инвесторов</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-pink-400 mb-2">85%</div>
+              <div className="text-gray-300">Успешных релизов</div>
+            </div>
           </div>
         </div>
       </section>
