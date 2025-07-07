@@ -2,8 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Navigation */}
@@ -283,27 +286,31 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
+                id: "1",
                 title: "Unity Developer",
-                company: "Pixel Studios",
-                salary: "₽150,000",
-                type: "Удаленно",
+                company: "GameDev Studio",
+                salary: "от ₽150,000",
+                type: "Полный день",
               },
               {
+                id: "2",
                 title: "Game Designer",
-                company: "Indie Games Co",
-                salary: "₽120,000",
-                type: "Офис",
+                company: "Pixel Perfect",
+                salary: "от ₽120,000",
+                type: "Полный день",
               },
               {
+                id: "3",
                 title: "3D Artist",
-                company: "Dream Team",
-                salary: "₽100,000",
-                type: "Гибрид",
+                company: "Visionary Games",
+                salary: "от ₽80,000",
+                type: "Фриланс",
               },
-            ].map((job, index) => (
+            ].map((job) => (
               <Card
-                key={index}
-                className="bg-black/40 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300"
+                key={job.id}
+                className="bg-black/40 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 cursor-pointer"
+                onClick={() => navigate(`/job/${job.id}`)}
               >
                 <CardHeader>
                   <CardTitle className="text-white">{job.title}</CardTitle>
@@ -325,6 +332,10 @@ const Index = () => {
                     <Button
                       size="sm"
                       className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/job/${job.id}`);
+                      }}
                     >
                       Откликнуться
                     </Button>
